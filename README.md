@@ -1,0 +1,1 @@
+Sample project - First step in docker with aspnet core
