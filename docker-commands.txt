@@ -1,0 +1,32 @@
+# deploy your docker-compose
+docker stack deploy -c docker-compose.yml todoapi
+
+# run your docker-compose without deploy
+docker-compose -f docker-compose.yml up
+
+# remove your docker-compose (if you want to stop your servers, for example)
+docker stack rm todoapi
+
+# stop all containers
+docker stop $(docker ps -a -q)
+
+# remove all containers (first you need to stop them)
+docker rm $(docker ps -a -q)
+
+# visualize logs from your Docker container
+docker logs --tail 50 --follow --timestamps #id
+
+# build your Docker container and set a name and tag to the image
+docker build . --tag mateusleonardi/dotnetcore:latest
+
+# run your Docker image
+docker run -d -p 5000:5000 --name todoapi mateusleonardi/dotnetcore
+
+# access the bash command of your Docker running
+docker exec -it #id bash
+
+# list containers in execution
+docker ps
+
+# list all Docker images you have in your machine
+docker images
